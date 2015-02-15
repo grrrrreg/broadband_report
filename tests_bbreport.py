@@ -1,4 +1,14 @@
 FRANCE = {
+    'raw': [
+        "telephone lines | 39.08 million  (world rank: 8th)  (2013 estimate)",
+        "mobile cellular subscriptions | 63.32 million  (world rank: 23rd)  (2013 estimate)",
+        "internet usage | 54.09 million people  (81.92% of population)  (world rank: 10th)  (2013 estimate)",
+        "fixed broadband internet subscribers | 24.94 million people  (world rank: 5th)  (2013 estimate)",
+        "average broadband upload rate | 2.55 Mb/s (2011 estimate)  (world rank: 41st)",
+        "average broadband download rate | 12.61 Mb/s (2011 estimate)  (world rank: 28th)",
+        "secure internet servers | 32098  (world rank: 8th)  (2013 estimate)",
+        "IP addresses | 85.03 million  (world rank: 7th)  (2015 estimate)"
+    ],
     'dirty': [
         {
             "metric": "telephone lines",
@@ -87,6 +97,16 @@ FRANCE = {
 }
 
 CHINA = {
+    'raw': [
+        "telephone lines | 267 million  (world rank: 1st)  (2013 estimate)",
+        "mobile cellular subscriptions | 1.229 billion  (world rank: 1st)  (2013 estimate)",
+        "internet usage | 621.7 million people  (45.8% of population)  (world rank: 1st)  (2013 estimate)",
+        "fixed broadband internet subscribers | 188.9 million people  (world rank: 1st)  (2013 estimate)",
+        "average broadband upload rate | 2.31 Mb/s (2011 estimate)  (world rank: 45th)",
+        "average broadband download rate | 4.69 Mb/s (2011 estimate)  (world rank: 68th)",
+        "secure internet servers | 5258  (world rank: 23rd)  (2013 estimate)",
+        "IP addresses | 331.6 million  (world rank: 2nd)  (2015 estimate)"
+    ],
     'dirty': [
         {
             "metric": "telephone lines",

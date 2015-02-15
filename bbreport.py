@@ -87,7 +87,7 @@ def reverse_country(mapping, country):
                 return False
 
 
-def country_query(country_name, query=False):
+def country_query(country_name, query=False, debug=False):
     '''executes the actual wolfram API query'''
     # test if the country is in the spawned country list
 
@@ -108,12 +108,15 @@ def country_query(country_name, query=False):
             if pod.title == RESPONSE_POD_TITLE:
                 string_response = pod.main.text
                 response_lines = string_response.split("\n")
-                for line in response_lines:
-                    curr_split = line.split(' | ')
-                    wresponse.append({
-                                     'metric': curr_split[0],
-                                     'value': curr_split[1]})
-                return wresponse
+                if debug:
+                    return response_lines
+                else:
+                    for line in response_lines:
+                        curr_split = line.split(' | ')
+                        wresponse.append({
+                                         'metric': curr_split[0],
+                                         'value': curr_split[1]})
+                    return wresponse
             else:
                 logging.debug("EMPTY RESPONSE: wolfram alpha has no data for " + country_name)
     except Exception, e:
