@@ -1,2 +1,3 @@
 .DS_Store
 *.py[cod]
+wolfram_api_config.py
