@@ -1,12 +1,12 @@
 import pycountry
 import wolframalpha
 import logging
-# import wolfram_api_config
 import json
 import csv
 # import test_bbreport as test
 
-# this way my wolfram config file is not share with everyone in the git repo
+# Dynamic loading of the wolfram config
+# this way my wolfram config file is not shared with everyone...
 try:
     import wolfram_api_config
     logging.debug('wolfram_api_config successfully loaded')
@@ -52,7 +52,7 @@ def country_list():
     '''builds and returns a dict with all countries
     has a dependency on the PyCountry module
     returned dict structure: {"<alpha2>:"<country_name>",...}'''
-    # return [{country.name: country.alpha2} for country in pycountry.countries]
+
     return_obj = {}
     for country in pycountry.countries:
         return_obj[country.alpha2] = country.name
@@ -62,6 +62,7 @@ def country_list():
 def isvalid_country_alpha2(query, country_list):
     '''tests if a two characters strings corresponds to a valid alpha2 country,
     if it is, returns the (<alpha>, <country_name>) else returns false'''
+
     if not isinstance(query, basestring):
         raise TypeError
         logging.error('argument of isvalid_country_alpha2() is not a string')
@@ -89,8 +90,9 @@ def reverse_country(mapping, country):
 
 
 def country_query(country_name, query=False, debug=False):
-    '''executes the actual wolfram API query'''
-    # test if the country is in the spawned country list
+    '''executes the actual wolfram API query
+    the returned result looks like test_bbreport.FRANCE[\'dirty\']
+    I\'m assuming I don't know what sub-fields the Wolfram API will yield, the country_response_cleanup() does this'''
 
     wclient = wolframalpha.Client(wolfram_api_config.WOLFRAM_API['api_key'])
     try:
@@ -126,6 +128,11 @@ def country_query(country_name, query=False, debug=False):
 
 
 def country_response_cleanup(response):
+    ''' takes a contry_query() object return that looks like test_bbreport.FRANCE[\'dirty\']
+    and turns it into an object that looks like test_bbreport.FRANCE[\'clean\']
+    you can\'t know in advance which fields Wolfram API will generate in the string, if new ones pop-up, this
+    fuction will need to be amended accordingly'''
+
     result = []
     for i, metric in enumerate(response):
         result.append({'metric': response[i]['metric'].replace('rate', 'rate Mb/s')})
@@ -134,9 +141,7 @@ def country_response_cleanup(response):
         for j, item in enumerate(tmp_array):
             # print item
             if ' million' in item:
-                # print 'TROUUUVAAYYYYYY'
                 if ' million people' in item:
-                    # print 'TROUUUVAAYYYYYY BIS REPETITA'
                     result[i]['value'] = int(float(item.replace(' million people', '')) * 1000000)
                 else:
                     result[i]['value'] = int(float(item.replace(' million', '')) * 1000000)
@@ -175,7 +180,10 @@ def country_response_cleanup(response):
 
 def mkreport(countries):
     '''builds a json w/ multiple country broadband statistics in it
-    country argument is an array, contains alpha2 strings'''
+    country argument is an array, contains alpha2 strings.
+    "countries" argument needs to be a list of valid alpha2 codes
+    --> returned report is already ran through country_response_cleanup()
+    --> returned report can then be run through flatten_report() or mk_csv_from_report()'''
 
     official_countries = country_list()
 
@@ -197,7 +205,7 @@ def mkreport(countries):
 
 def mk_columns_from_report(report):
     ''' dynamically computes the 1st row for display_report() as a header, depending on the amount of fields that
-    mkreport returns for all involved countries'''
+    mkreport() - dynamically detects the resulting union of columns from each country report in the report argument'''
 
     header = ['country', 'country_alpha2']
     header_filter = ['metric', 'value']
@@ -215,7 +223,8 @@ def mk_columns_from_report(report):
 
 def flatten_report(report):
     '''uses a mkreport() output and displays it in a human friendly way
-    tries to figure out what fields to display dynamically from the report argument'''
+    tries to figure out what fields to display dynamically from the report argument
+    --> calls mk_columns_from_report() to build header as 1st entry of return'''
 
     header_filter = ['metric', 'value']
 
@@ -239,7 +248,8 @@ def flatten_report(report):
 
 
 def mk_csv_from_report(report, file_name):
-    ''' writes a CSV file from a report, openable in XLS'''
+    ''' writes a CSV file from a report, openable in XLS
+    --> "report" argument needs to be in the format returned by mkreport()'''
 
     f = open(file_name, 'wt')
     try:
