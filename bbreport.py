@@ -3,6 +3,7 @@ import wolframalpha
 import logging
 # import wolfram_api_config
 import json
+import csv
 # import test_bbreport as test
 
 # this way my wolfram config file is not share with everyone in the git repo
@@ -170,6 +171,83 @@ def country_response_cleanup(response):
                 result[i]['value'] = int(item)
 
     return result
+
+
+def mkreport(countries):
+    '''builds a json w/ multiple country broadband statistics in it
+    country argument is an array, contains alpha2 strings'''
+
+    official_countries = country_list()
+
+    if not isinstance(countries, list):
+        logging.error('countries argument in mkreport() is not an array of alpha2 countries')
+        raise TypeError
+    else:
+        for elt in countries:
+            if elt not in official_countries.keys():
+                logging.error(elt.upper() + ' - INVALID Alpha2 Country')
+            else:
+                report = {}
+                for country in countries:
+                    country_name = official_countries[country]
+                    curr_report = country_response_cleanup(country_query(country_name))
+                    report['country_name'] = curr_report
+                return report
+
+
+def mk_columns_from_report(report):
+    ''' dynamically computes the 1st row for display_report() as a header, depending on the amount of fields that
+    mkreport returns for all involved countries'''
+
+    header = ['country', 'country_alpha2']
+    header_filter = ['metric', 'value']
+
+    for country in report:
+        for metrics in report[country]:
+            curr_metric = metrics['metric']
+            if curr_metric not in header:
+                header.append(curr_metric)
+                for field in metrics:
+                    if field not in header_filter:
+                        header.append(field)
+    return header
+
+
+def flatten_report(report):
+    '''uses a mkreport() output and displays it in a human friendly way
+    tries to figure out what fields to display dynamically from the report argument'''
+
+    header_filter = ['metric', 'value']
+
+    # make header
+    official_countries = country_list()
+    table = []
+    table.append(mk_columns_from_report(report))
+    for country in report:
+        curr_record = []
+        curr_record.append(country)
+        for alpha2 in official_countries:
+            if official_countries[alpha2] == country:
+                curr_record.append(alpha2)
+        for metric in report[country]:
+            curr_record.append(metric['value'])
+            for key in metric:
+                if key not in header_filter:
+                    curr_record.append(metric[key])
+        table.append(curr_record)
+    return table
+
+
+def mk_csv_from_report(report, file_name):
+    ''' writes a CSV file from a report, openable in XLS'''
+
+    f = open(file_name, 'wt')
+    try:
+        writer = csv.writer(f)
+        for line in flatten_report(report):
+            writer.writerow(line)
+    finally:
+        f.close()
 
 
 def main():

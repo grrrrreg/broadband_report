@@ -193,3 +193,262 @@ CHINA = {
         }
     ]
 }
+
+# report containing "Clean" values for multiple countries
+REPORT = {
+    "Japan": [
+        {
+            "metric": "telephone lines",
+            "world_rank": 3,
+            "estimated_metric_age": 2013,
+            "value": 64060000
+        },
+        {
+            "metric": "mobile cellular subscriptions",
+            "world_rank": 7,
+            "estimated_metric_age": 2013,
+            "value": 146500000
+        },
+        {
+            "metric": "internet usage",
+            "world_rank": 4,
+            "percent_of_population": 86.25,
+            "estimated_metric_age": 2013,
+            "value": 109800000
+        },
+        {
+            "metric": "fixed broadband internet subscribers",
+            "world_rank": 3,
+            "estimated_metric_age": 2013,
+            "value": 36660000
+        },
+        {
+            "metric": "average broadband upload rate Mb/s",
+            "world_rank": 11,
+            "estimated_metric_age": 2011,
+            "value": 9.96
+        },
+        {
+            "metric": "average broadband download rate Mb/s",
+            "world_rank": 13,
+            "estimated_metric_age": 2011,
+            "value": 17.36
+        },
+        {
+            "metric": "secure internet servers",
+            "world_rank": 3,
+            "estimated_metric_age": 2013,
+            "value": 93806
+        },
+        {
+            "metric": "IP addresses",
+            "world_rank": 3,
+            "estimated_metric_age": 2015,
+            "value": 202800000
+        }
+    ],
+    "Australia": [
+        {
+            "metric": "telephone lines",
+            "world_rank": 19,
+            "estimated_metric_age": 2013,
+            "value": 10350000
+        },
+        {
+            "metric": "mobile cellular subscriptions",
+            "world_rank": 44,
+            "estimated_metric_age": 2013,
+            "value": 24940000
+        },
+        {
+            "metric": "internet usage",
+            "world_rank": 29,
+            "percent_of_population": 83.0,
+            "estimated_metric_age": 2013,
+            "value": 19200000
+        },
+        {
+            "metric": "fixed broadband internet subscribers",
+            "world_rank": 18,
+            "estimated_metric_age": 2013,
+            "value": 5839000
+        },
+        {
+            "metric": "average broadband upload rate Mb/s",
+            "world_rank": 76,
+            "estimated_metric_age": 2011,
+            "value": 1.27
+        },
+        {
+            "metric": "average broadband download rate Mb/s",
+            "world_rank": 43,
+            "estimated_metric_age": 2011,
+            "value": 8.53
+        },
+        {
+            "metric": "secure internet servers",
+            "world_rank": 9,
+            "estimated_metric_age": 2013,
+            "value": 28966
+        },
+        {
+            "metric": "IP addresses",
+            "world_rank": 11,
+            "estimated_metric_age": 2015,
+            "value": 49210000
+        }
+    ],
+    "Italy": [
+        {
+            "metric": "telephone lines",
+            "world_rank": 13,
+            "estimated_metric_age": 2013,
+            "value": 20930000
+        },
+        {
+            "metric": "mobile cellular subscriptions",
+            "world_rank": 16,
+            "estimated_metric_age": 2013,
+            "value": 96900000
+        },
+        {
+            "metric": "internet usage",
+            "world_rank": 17,
+            "percent_of_population": 58.46,
+            "estimated_metric_age": 2013,
+            "value": 34980000
+        },
+        {
+            "metric": "fixed broadband internet subscribers",
+            "world_rank": 12,
+            "estimated_metric_age": 2013,
+            "value": 13600000
+        },
+        {
+            "metric": "average broadband upload rate Mb/s",
+            "world_rank": 105,
+            "estimated_metric_age": 2011,
+            "value": 0.94
+        },
+        {
+            "metric": "average broadband download rate Mb/s",
+            "world_rank": 67,
+            "estimated_metric_age": 2011,
+            "value": 4.8
+        },
+        {
+            "metric": "secure internet servers",
+            "world_rank": 13,
+            "estimated_metric_age": 2013,
+            "value": 12159
+        },
+        {
+            "metric": "IP addresses",
+            "world_rank": 10,
+            "estimated_metric_age": 2015,
+            "value": 53750000
+        }
+    ],
+    "Russian Federation": [
+        {
+            "metric": "telephone lines",
+            "world_rank": 6,
+            "estimated_metric_age": 2013,
+            "value": 40660000
+        },
+        {
+            "metric": "mobile cellular subscriptions",
+            "world_rank": 6,
+            "estimated_metric_age": 2013,
+            "value": 218300000
+        },
+        {
+            "metric": "internet usage",
+            "world_rank": 6,
+            "percent_of_population": 61.4,
+            "estimated_metric_age": 2013,
+            "value": 88110000
+        },
+        {
+            "metric": "fixed broadband internet subscribers",
+            "world_rank": 6,
+            "estimated_metric_age": 2013,
+            "value": 23730000
+        },
+        {
+            "metric": "average broadband upload rate Mb/s",
+            "world_rank": 14,
+            "estimated_metric_age": 2011,
+            "value": 7.91
+        },
+        {
+            "metric": "average broadband download rate Mb/s",
+            "world_rank": 38,
+            "estimated_metric_age": 2011,
+            "value": 10.05
+        },
+        {
+            "metric": "secure internet servers",
+            "world_rank": 21,
+            "estimated_metric_age": 2013,
+            "value": 7338
+        },
+        {
+            "metric": "IP addresses",
+            "world_rank": 13,
+            "estimated_metric_age": 2014,
+            "value": 46600000
+        }
+    ],
+    "Spain": [
+        {
+            "metric": "telephone lines",
+            "world_rank": 15,
+            "estimated_metric_age": 2013,
+            "value": 19110000
+        },
+        {
+            "metric": "mobile cellular subscriptions",
+            "world_rank": 29,
+            "estimated_metric_age": 2013,
+            "value": 50170000
+        },
+        {
+            "metric": "internet usage",
+            "world_rank": 19,
+            "percent_of_population": 71.57,
+            "estimated_metric_age": 2013,
+            "value": 33390000
+        },
+        {
+            "metric": "fixed broadband internet subscribers",
+            "world_rank": 13,
+            "estimated_metric_age": 2013,
+            "value": 12000000
+        },
+        {
+            "metric": "average broadband upload rate Mb/s",
+            "world_rank": 68,
+            "estimated_metric_age": 2011,
+            "value": 1.59
+        },
+        {
+            "metric": "average broadband download rate Mb/s",
+            "world_rank": 35,
+            "estimated_metric_age": 2011,
+            "value": 10.24
+        },
+        {
+            "metric": "secure internet servers",
+            "world_rank": 12,
+            "estimated_metric_age": 2013,
+            "value": 12550
+        },
+        {
+            "metric": "IP addresses",
+            "world_rank": 16,
+            "estimated_metric_age": 2015,
+            "value": 29730000
+        }
+    ]
+}
